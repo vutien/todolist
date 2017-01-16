@@ -1,0 +1,32 @@
+{% extends 'layout.html' %}
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <h1 class="text-center">Todo list</h1>
+        </div>
+        <div class="row">
+            <form action="/" method="post">
+                <div class="form-group form-inline">
+                    <input name="todo" type="text" class="form-control" placeholder="Nhap viec can lam" style="width: 80%">
+                    <button type="submit" class="btn btn-default">Them moi</button>
+                </div>
+            </form>
+        </div>
+        <div class="row">
+            <ul class="list-group">
+                {% for item in data %}
+                    
+                    <li class="list-group-item {% if item.completed %} list-group-item-success {% endif %}">
+                        {{item.title}}
+                        <div class="btn-group-sm pull-right">
+                            <a href="/done/{{item.id}}" class="btn btn-default"><span class="pull-right glyphicon glyphicon-ok"></span></a>
+                            <a href="/delete/{{item.id}}" class="btn btn-default"><span class="pull-right glyphicon glyphicon-remove"></span></a>
+                            
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+        
+{% endblock %}
